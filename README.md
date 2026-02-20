@@ -1,10 +1,10 @@
-# Clean Express API 🏗️
+# Clean Express API
 
 A production-ready Node.js API developed with **Express** and **TypeScript**, following strict **Clean Architecture** and **Clean Code** principles. This repository serves as a reference for scalable backend design, testability, and separation of concerns.
 
 ---
 
-### 🏛️ Architecture Overview
+### Architecture Overview
 
 The project is structured into concentric layers where dependencies always point inward toward the Domain:
 
@@ -26,7 +26,7 @@ The project is structured into concentric layers where dependencies always point
 
 ---
 
-### 🛠️ Technical Stack
+### Technical Stack
 
 - **Runtime**: [Node.js](https://nodejs.org/) & [Express](https://expressjs.com/)
 - **Language**: [TypeScript](https://www.typescriptlang.org/) (Static Typing & Safety)
@@ -35,7 +35,7 @@ The project is structured into concentric layers where dependencies always point
 
 ---
 
-### 🚀 Getting Started
+### Getting Started
 
 1. **Install Dependencies**
    ```bash

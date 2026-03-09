@@ -1,63 +1,102 @@
 # Clean Express API
 
-A production-ready Node.js API developed with **Express** and **TypeScript**, following strict **Clean Architecture** and **Clean Code** principles. This repository serves as a reference for scalable backend design, testability, and separation of concerns.
+[![CI](https://github.com/Allysson-Rodrigues/clean-express-api/actions/workflows/ci.yml/badge.svg)](https://github.com/Allysson-Rodrigues/clean-express-api/actions/workflows/ci.yml)
 
----
+Reference API built with Express and TypeScript, organized around Clean Architecture boundaries and a small but testable HTTP surface.
 
-### Architecture Overview
+## What this repository demonstrates
 
-The project is structured into concentric layers where dependencies always point inward toward the Domain:
+- Domain, presentation, and main layers with inward-facing dependencies
+- Express adapters that keep controllers framework-independent
+- Sample endpoints for health checks and welcome responses
+- Jest + Supertest coverage for domain and HTTP behavior
+- ESLint + Prettier quality baseline
 
-- **Domain Layer**: Contains Entities and Use Cases (Pure Business Logic). Zero dependencies on external frameworks.
-- **Presentation Layer**: Contains Controllers and Protocols that translate Web requests for the Domain.
-- **Main Layer**: Handles Dependency Injection, Framework configuration (Express), and Server bootstrap.
+## Technical stack
 
-#### Project Structure
+- Runtime: Node.js
+- Framework: Express 4
+- Language: TypeScript
+- Security: Helmet, CORS
+- Testing: Jest, Supertest
+- Tooling: ESLint, Prettier, `tsx`
+
+## Architecture snapshot
+
 ```text
+.
 ├── src/
-│   ├── domain/        # Entities and Use Cases
-│   ├── presentation/  # Controllers and Interface Adapters
-│   ├── main/          # Infrastructure, Configuration, and Adapters
-│   └── server.ts      # Application Entrypoint
-├── dist/              # Compiled output (Gitignored)
-├── .env               # Infrastructure secrets (Gitignored)
-└── package.json       # Scripts and dependencies
+│   ├── domain/        Entities and use cases
+│   ├── presentation/  Controllers and HTTP protocols
+│   ├── main/          App setup, route wiring, and adapters
+│   └── server.ts      Runtime entry point
+├── .env.example
+├── eslint.config.js
+├── jest.config.cjs
+├── tsconfig.json
+└── package.json
 ```
 
----
+Current public routes:
 
-### Technical Stack
+- `GET /health`
+- `GET /api/welcome`
 
-- **Runtime**: [Node.js](https://nodejs.org/) & [Express](https://expressjs.com/)
-- **Language**: [TypeScript](https://www.typescriptlang.org/) (Static Typing & Safety)
-- **Security**: [Helmet](https://helmetjs.github.io/) (Secure Headers)
-- **Testing**: [Jest](https://jestjs.io/) & [Supertest](https://github.com/ladjs/supertest) (Unit & Integration)
+## Local setup
 
----
+1. Install dependencies:
 
-### Getting Started
+```bash
+npm ci
+```
 
-1. **Install Dependencies**
-   ```bash
-   npm install
-   ```
+2. Create your environment file:
 
-2. **Infrastructure Configuration**
-   ```bash
-   cp .env.example .env
-   ```
+```bash
+cp .env.example .env
+```
 
-3. **Development Mode**
-   ```bash
-   npm run dev
-   ```
+3. Start the API in development:
 
-4. **Testing Suite**
-   ```bash
-   npm test
-   ```
+```bash
+npm run dev
+```
 
----
+4. Run the quality gate:
 
-**Allysson Rodrigues**
-Backend Infrastructure & AI Engineering
+```bash
+npm run lint
+npm run build
+npm test
+```
+
+## Environment contract
+
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| `PORT` | `3000` | HTTP port for the Express server |
+| `NODE_ENV` | `development` | Runtime mode |
+
+The repository ships with [`.env.example`](./.env.example) as the baseline contract.
+
+## Testing and CI
+
+The automated test suite currently covers:
+
+- domain use cases
+- server integration with Supertest
+
+GitHub Actions now runs on pushes and pull requests to `main` with:
+
+- install via `npm ci`
+- `npm run lint`
+- `npm run build`
+- `npm test`
+
+## Delivery notes
+
+This repository is intentionally infrastructure-agnostic. `npm run build` emits the compiled server to `dist/`, which can be deployed to any Node-compatible runtime or wrapped in your own container/platform pipeline.
+
+## License
+
+ISC

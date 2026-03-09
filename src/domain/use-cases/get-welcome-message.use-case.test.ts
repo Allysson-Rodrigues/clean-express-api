@@ -1,5 +1,5 @@
-import { describe, expect, it } from '@jest/globals';
-import { GetWelcomeMessageUseCase } from './get-welcome-message.use-case';
+import { describe, expect, it } from "@jest/globals";
+import { GetWelcomeMessageUseCase } from "./get-welcome-message.use-case.js";
 
 describe('GetWelcomeMessageUseCase', () => {
     it('deve retornar a mensagem de boas-vindas correta', () => {

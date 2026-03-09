@@ -1,4 +1,4 @@
-import { WelcomeMessage } from '../entities/welcome-message.entity';
+import { WelcomeMessage } from "../entities/welcome-message.entity.js";
 
 export interface GetWelcomeMessage {
     execute(): WelcomeMessage;
